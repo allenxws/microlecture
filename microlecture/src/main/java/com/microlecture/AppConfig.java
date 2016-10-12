@@ -1,4 +1,4 @@
-package com.microlecture.user;
+package com.microlecture;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -9,5 +9,4 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = "com.microlecture")
 public class AppConfig {
-	
 }
