@@ -1,15 +1,13 @@
 package com.microlecture.user.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 /**
  * Created by xuwushun on 2016/10/12.
  */
 public class User {
 	private Long id;
-	@JsonProperty("user_name")
-	private String userName;
+	private String phoneNumber;
 	private String password;
+	private String nickName;
 
 	public Long getId() {
 		return id;
@@ -19,12 +17,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getPassword() {
@@ -33,5 +31,13 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 }

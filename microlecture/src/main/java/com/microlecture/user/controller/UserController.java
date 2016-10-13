@@ -4,6 +4,7 @@ import com.microlecture.user.domain.User;
 import com.microlecture.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,5 +20,10 @@ public class UserController {
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
 	public User get(@RequestParam("id") Long id){
 		return userService.get(id);
+	}
+
+	@RequestMapping(value = "/add", method = RequestMethod.PUT)
+	public void add(@RequestBody User user){
+
 	}
 }
