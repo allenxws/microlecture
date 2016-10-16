@@ -1,7 +1,12 @@
 package com.microlecture.lecture.controller;
 
 import com.microlecture.common.reponse.CommonListResponse;
+import com.microlecture.lecture.request.ListLectureRequest;
+import com.microlecture.lecture.request.ListLectureResponse;
+import com.microlecture.lecture.service.LectureService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/lecture")
 public class LectureController {
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public CommonListResponse list(@RequestParam("last_item_id") Long lastItemId, @RequestParam("page_size") Integer pageSize){
-
+    @Autowired
+    LectureService lectureService;
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    public CommonListResponse<ListLectureResponse> list(@RequestBody ListLectureRequest listLectureRequest){
+        return lectureService.list(listLectureRequest);
     }
 }

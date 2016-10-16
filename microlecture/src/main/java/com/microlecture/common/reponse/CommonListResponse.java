@@ -15,8 +15,15 @@ public class CommonListResponse<T> {
     @JsonProperty("total_num")
     private Integer totalNum;
     @JsonProperty("last_item_id")
-    private Long lastItemId;
     private List<T> data;
+
+    public CommonListResponse(){
+
+    }
+
+    public CommonListResponse(List<T> data){
+        this.data = data;
+    }
 
     public Integer getIndex() {
         return index;
@@ -48,14 +55,6 @@ public class CommonListResponse<T> {
 
     public void setTotalNum(Integer totalNum) {
         this.totalNum = totalNum;
-    }
-
-    public Long getLastItemId() {
-        return lastItemId;
-    }
-
-    public void setLastItemId(Long lastItemId) {
-        this.lastItemId = lastItemId;
     }
 
     public List<T> getData() {

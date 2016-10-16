@@ -2,6 +2,8 @@ package com.microlecture.lecture.domain;
 
 import com.microlecture.common.domain.CommonDomain;
 
+import java.util.Date;
+
 /**
  * Created by xuwushun on 2016/10/12.
  */
@@ -12,9 +14,12 @@ public class Lecture extends CommonDomain{
     private String content;
     private String latitude;
     private String longitude;
+    private Date startTime;
+    private Date endTime;
     private Double lowerPrice;
     private Double upperPrice;
     private Integer maxJoin;
+    private Byte status;
 
     public Long getId() {
         return id;
@@ -86,5 +91,29 @@ public class Lecture extends CommonDomain{
 
     public void setMaxJoin(Integer maxJoin) {
         this.maxJoin = maxJoin;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 }

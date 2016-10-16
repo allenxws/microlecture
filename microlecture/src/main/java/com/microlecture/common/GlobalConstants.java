@@ -8,4 +8,5 @@ public class GlobalConstants {
 	public static final String REDIS_TICKET_KEY = "ticketKey";
 	public static final String REDIS_TICKET_VALUE = "ticketValue";
 	public static final String REDIS_KEY_SEPERATOR = ":";
+	public static final Integer COMMON_PAGE_SIZE = 20;
 }
