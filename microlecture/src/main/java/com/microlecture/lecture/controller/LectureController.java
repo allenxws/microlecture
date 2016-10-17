@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by xuwushun on 2016/10/12.
@@ -17,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/lecture")
 public class LectureController {
-    @Autowired
-    LectureService lectureService;
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public CommonListResponse<ListLectureResponse> list(@RequestBody ListLectureRequest listLectureRequest){
-        return lectureService.list(listLectureRequest);
-    }
+	@Autowired
+	LectureService lectureService;
+
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	public CommonListResponse<ListLectureResponse> list(@RequestBody ListLectureRequest listLectureRequest) {
+		return lectureService.list(listLectureRequest);
+	}
 }
