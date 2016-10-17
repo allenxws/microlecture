@@ -19,5 +19,4 @@ CREATE TABLE `lecture` (
 COMMENT='讲座表'
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=2
 ;
