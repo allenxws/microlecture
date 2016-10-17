@@ -16,19 +16,20 @@ import java.util.Map;
  */
 @Service
 public class LectureServiceDB {
-    @Autowired
-    LectureMapper lectureMapper;
-    public CommonListResponse<ListLectureResponse> list(ListLectureRequest listLectureRequest){
-        Map paramMap = getParamMap(listLectureRequest);
-        List<ListLectureResponse> listLectureResponses = lectureMapper.list(paramMap);
-        return new CommonListResponse<>();
-    }
+	@Autowired
+	LectureMapper lectureMapper;
 
-    public Map getParamMap(ListLectureRequest listLectureRequest){
-        Map<String, Object> map = new HashMap();
-        map.put("latitude", listLectureRequest.getLatitude());
-        map.put("longtitude", listLectureRequest.getLongitude());
-        map.put("pageSize", listLectureRequest.getPageSize());
-        return map;
-    }
+	public CommonListResponse<ListLectureResponse> list(ListLectureRequest listLectureRequest) {
+		Map paramMap = getParamMap(listLectureRequest);
+		List<ListLectureResponse> listLectureResponses = lectureMapper.list(paramMap);
+		return new CommonListResponse(listLectureResponses);
+	}
+
+	public Map getParamMap(ListLectureRequest listLectureRequest) {
+		Map<String, Object> map = new HashMap();
+		map.put("latitude", listLectureRequest.getLatitude());
+		map.put("longtitude", listLectureRequest.getLongitude());
+		map.put("pageSize", listLectureRequest.getPageSize());
+		return map;
+	}
 }
