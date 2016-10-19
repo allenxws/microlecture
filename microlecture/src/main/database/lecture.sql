@@ -1,6 +1,7 @@
 CREATE TABLE `lecture` (
 	`id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键id',
-	`userName` VARCHAR(32) NOT NULL COMMENT '讲座名称',
+	`user_id` BIGINT(20) NOT NULL COMMENT '讲座作者，关联user.id',
+	`name` VARCHAR(32) NOT NULL COMMENT '讲座名称',
 	`subject` VARCHAR(64) NULL DEFAULT NULL COMMENT '讲座主题',
 	`content` VARCHAR(1000) NULL DEFAULT NULL COMMENT '讲座内容',
 	`latitude` VARCHAR(32) NULL DEFAULT NULL COMMENT '讲座地址纬度',

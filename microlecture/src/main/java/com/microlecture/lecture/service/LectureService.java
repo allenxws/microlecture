@@ -2,7 +2,8 @@ package com.microlecture.lecture.service;
 
 import com.microlecture.common.reponse.CommonListResponse;
 import com.microlecture.lecture.request.ListLectureRequest;
-import com.microlecture.lecture.request.ListLectureResponse;
+import com.microlecture.lecture.response.GetLectureResponse;
+import com.microlecture.lecture.response.ListLectureResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -13,5 +14,9 @@ public class LectureService {
     LectureServiceDB lectureServiceDB;
     public CommonListResponse<ListLectureResponse> list(ListLectureRequest listLectureRequest){
         return lectureServiceDB.list(listLectureRequest);
+    }
+
+    public GetLectureResponse get(Long id){
+        return lectureServiceDB.get(id);
     }
 }

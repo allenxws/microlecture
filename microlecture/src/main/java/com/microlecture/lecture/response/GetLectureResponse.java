@@ -1,50 +1,40 @@
-package com.microlecture.lecture.domain;
+package com.microlecture.lecture.response;
 
-import com.microlecture.common.domain.CommonDomain;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
 /**
- * Created by xuwushun on 2016/10/12.
+ * Created by xuwushun on 2016/10/19.
  */
-public class Lecture extends CommonDomain {
-	private Long id;
-	private Long userId;
+public class GetLectureResponse {
+	@JsonProperty("user_name")
+	private String userName;
 	private String name;
 	private String subject;
 	private String content;
 	private String latitude;
 	private String longitude;
+	@JsonProperty("start_time")
 	private Date startTime;
+	@JsonProperty("end_time")
 	private Date endTime;
+	@JsonProperty("lower_price")
 	private Double lowerPrice;
+	@JsonProperty("upper_price")
 	private Double upperPrice;
+	@JsonProperty("max_join")
 	private Integer maxJoin;
 	private Byte status;
-	private Double distance;
+	@JsonProperty("now_join")
+	private Integer nowJoin;
 
-	public Double getDistance() {
-		return distance;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setDistance(Double distance) {
-		this.distance = distance;
-	}
-
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getName() {
@@ -87,6 +77,22 @@ public class Lecture extends CommonDomain {
 		this.longitude = longitude;
 	}
 
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
 	public Double getLowerPrice() {
 		return lowerPrice;
 	}
@@ -111,27 +117,19 @@ public class Lecture extends CommonDomain {
 		this.maxJoin = maxJoin;
 	}
 
-	public Date getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-
-	public Date getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
-
 	public Byte getStatus() {
 		return status;
 	}
 
 	public void setStatus(Byte status) {
 		this.status = status;
+	}
+
+	public Integer getNowJoin() {
+		return nowJoin;
+	}
+
+	public void setNowJoin(Integer nowJoin) {
+		this.nowJoin = nowJoin;
 	}
 }

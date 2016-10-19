@@ -14,7 +14,7 @@ public class LectureSqlProvider {
 		if (null != latitude && null != longitude) {
 			sql.append("(power(t.latitude-#{latitude}, 2)+power(t.longitude-#{longitude}, 2)) d, ");
 		}
-		sql.append("id, name, subject, content, latitude, longitude, start_time, end_time, lower_price, upper_price" +
+		sql.append("id, user_id, name, subject, content, latitude, longitude, start_time, end_time, lower_price, upper_price" +
 				", max_join, status, is_deleted, create_time, update_time");
 		sql.append(" from lecture t where id > #{lastItemId} and t.is_deleted = 0 and t.start_time > now()");
 		if (null != latitude && null != longitude) {

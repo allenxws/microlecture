@@ -19,4 +19,9 @@ public interface UserMapper {
 
 	@Insert({"insert into user (phone_number, password, nick_name) values (#{phoneNumber}, #{password}, #{nickName})"})
 	void insert(User user);
+
+	@Select({
+			"select user_name from user where is_deleted = 0 and id = #{id} limit 1"
+	})
+	String getNameByPrimaryKey(@Param("id") Long id);
 }

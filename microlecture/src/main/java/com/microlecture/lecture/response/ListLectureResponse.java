@@ -1,4 +1,4 @@
-package com.microlecture.lecture.request;
+package com.microlecture.lecture.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
