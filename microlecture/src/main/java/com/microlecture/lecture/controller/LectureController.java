@@ -1,6 +1,8 @@
 package com.microlecture.lecture.controller;
 
 import com.microlecture.common.reponse.CommonListResponse;
+import com.microlecture.common.reponse.CommonResponse;
+import com.microlecture.lecture.request.AddLectureRequest;
 import com.microlecture.lecture.request.ListLectureRequest;
 import com.microlecture.lecture.response.GetLectureResponse;
 import com.microlecture.lecture.response.ListLectureResponse;
@@ -29,5 +31,10 @@ public class LectureController {
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
 	public GetLectureResponse get(@RequestParam("id") Long id) {
 		return lectureService.get(id);
+	}
+
+	@RequestMapping(value = "/add", method = RequestMethod.PUT)
+	public CommonResponse add(@RequestBody AddLectureRequest addLectureRequest){
+		return lectureService.add(addLectureRequest);
 	}
 }

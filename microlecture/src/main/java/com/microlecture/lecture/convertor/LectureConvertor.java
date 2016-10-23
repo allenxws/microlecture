@@ -1,7 +1,7 @@
 package com.microlecture.lecture.convertor;
 
-import com.google.common.collect.Lists;
 import com.microlecture.lecture.domain.Lecture;
+import com.microlecture.lecture.request.AddLectureRequest;
 import com.microlecture.lecture.request.ListLectureRequest;
 import com.microlecture.lecture.response.GetLectureResponse;
 import com.microlecture.lecture.response.ListLectureResponse;
@@ -49,7 +49,7 @@ public class LectureConvertor {
 	}
 
 	public static List<ListLectureResponse> convertToListLectureResponseList(List<Lecture> lectures) {
-		List<ListLectureResponse> listLectureResponses = Lists.newArrayList();
+		List<ListLectureResponse> listLectureResponses =
 		if (CollectionUtils.isEmpty(lectures)) {
 			return listLectureResponses;
 		}
@@ -62,7 +62,6 @@ public class LectureConvertor {
 
 	public GetLectureResponse convertToGetLectureResponse(Lecture lecture) {
 		GetLectureResponse getLectureResponse = new GetLectureResponse();
-		getLectureResponse.setName(lecture.getName());
 		getLectureResponse.setUserName(userMapper.getNameByPrimaryKey(lecture.getUserId()));
 		getLectureResponse.setStartTime(lecture.getStartTime());
 		getLectureResponse.setEndTime(lecture.getEndTime());
@@ -76,5 +75,22 @@ public class LectureConvertor {
 		getLectureResponse.setNowJoin(signUpMapper.countSignUpNum(lecture.getId()));
 		getLectureResponse.setStatus(lecture.getStatus());
 		return getLectureResponse;
+	}
+
+	public static Lecture convertToLecture(AddLectureRequest addLectureRequest) {
+		Lecture lecture = new Lecture();
+		if (null == addLectureRequest) {
+			return lecture;
+		}
+		lecture.setSubject(addLectureRequest.getSubject());
+		lecture.setContent(addLectureRequest.getContent());
+		lecture.setLatitude(addLectureRequest.getLatitude());
+		lecture.setLongitude(addLectureRequest.getLongitude());
+		lecture.setStartTime(addLectureRequest.getStartTime());
+		lecture.setEndTime(addLectureRequest.getEndTime());
+		lecture.setLowerPrice(addLectureRequest.getLowerPrice());
+		lecture.setUpperPrice(addLectureRequest.getUpperPrice());
+		lecture.setMaxJoin(addLectureRequest.getMaxJoin());
+		return lecture;
 	}
 }

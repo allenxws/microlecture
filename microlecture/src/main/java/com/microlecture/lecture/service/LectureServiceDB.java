@@ -1,9 +1,11 @@
 package com.microlecture.lecture.service;
 
 import com.microlecture.common.reponse.CommonListResponse;
+import com.microlecture.common.reponse.CommonResponse;
 import com.microlecture.lecture.convertor.LectureConvertor;
 import com.microlecture.lecture.dao.LectureMapper;
 import com.microlecture.lecture.domain.Lecture;
+import com.microlecture.lecture.request.AddLectureRequest;
 import com.microlecture.lecture.request.ListLectureRequest;
 import com.microlecture.lecture.response.GetLectureResponse;
 import com.microlecture.lecture.response.ListLectureResponse;
@@ -34,5 +36,11 @@ public class LectureServiceDB {
 		Lecture lecture = lectureMapper.selectByPrimaryKey(id);
 		GetLectureResponse getLectureResponse = lectureConvertor.convertToGetLectureResponse(lecture);
 		return getLectureResponse;
+	}
+
+	public CommonResponse add(AddLectureRequest addLectureRequest) {
+		Lecture lecture = LectureConvertor.convertToLecture(addLectureRequest);
+		lectureMapper.insert(lecture);
+		return new CommonResponse();
 	}
 }

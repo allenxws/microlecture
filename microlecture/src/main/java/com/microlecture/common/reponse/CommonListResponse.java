@@ -8,60 +8,67 @@ import java.util.List;
  * Created by xuwushun on 2016/10/15.
  */
 public class CommonListResponse<T> {
-    private Integer index;
-    private Integer size;
-    @JsonProperty("total_page")
-    private Integer totalPage;
-    @JsonProperty("total_num")
-    private Integer totalNum;
-    @JsonProperty("last_item_id")
-    private List<T> data;
+	private String code = "success";
+	private String message = "成功";
+	private Integer index;
+	private Integer size;
+	@JsonProperty("total_page")
+	private Integer totalPage;
+	@JsonProperty("total_num")
+	private Integer totalNum;
+	@JsonProperty("last_item_id")
+	private List<T> data;
 
-    public CommonListResponse(){
+	public CommonListResponse() {
 
-    }
+	}
 
-    public CommonListResponse(List<T> data){
-        this.data = data;
-    }
+	public CommonListResponse(String code, String message) {
+		this.code = code;
+		this.message = message;
+	}
 
-    public Integer getIndex() {
-        return index;
-    }
+	public CommonListResponse(List<T> data) {
+		this.data = data;
+	}
 
-    public void setIndex(Integer index) {
-        this.index = index;
-    }
+	public Integer getIndex() {
+		return index;
+	}
 
-    public Integer getSize() {
-        return size;
-    }
+	public void setIndex(Integer index) {
+		this.index = index;
+	}
 
-    public void setSize(Integer size) {
-        this.size = size;
-    }
+	public Integer getSize() {
+		return size;
+	}
 
-    public Integer getTotalPage() {
-        return totalPage;
-    }
+	public void setSize(Integer size) {
+		this.size = size;
+	}
 
-    public void setTotalPage(Integer totalPage) {
-        this.totalPage = totalPage;
-    }
+	public Integer getTotalPage() {
+		return totalPage;
+	}
 
-    public Integer getTotalNum() {
-        return totalNum;
-    }
+	public void setTotalPage(Integer totalPage) {
+		this.totalPage = totalPage;
+	}
 
-    public void setTotalNum(Integer totalNum) {
-        this.totalNum = totalNum;
-    }
+	public Integer getTotalNum() {
+		return totalNum;
+	}
 
-    public List<T> getData() {
-        return data;
-    }
+	public void setTotalNum(Integer totalNum) {
+		this.totalNum = totalNum;
+	}
 
-    public void setData(List<T> data) {
-        this.data = data;
-    }
+	public List<T> getData() {
+		return data;
+	}
+
+	public void setData(List<T> data) {
+		this.data = data;
+	}
 }

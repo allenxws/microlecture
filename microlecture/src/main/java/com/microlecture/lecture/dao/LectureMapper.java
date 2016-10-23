@@ -56,4 +56,12 @@ public interface LectureMapper {
 			@Result(property = "updateTime", column = "update_time")
 	})
 	Lecture selectByPrimaryKey(@Param("id") Long id);
+
+	@Insert({
+			"insert into lecture (subject, content, latitude, longitude, start_time, end_time, lower_price, upper_price" +
+					", max_join, status, is_deleted, create_time, update_time) values" +
+					" (#{subject}, #{content}, #{latitude}, #{longitude}, #{startTime}, #{endTime}, #{lowerPrice}, #{upperPrice}" +
+					", #{maxJoin}, 0, 0, now(), now())"
+	})
+	void insert(Lecture lecture);
 }

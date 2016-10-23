@@ -10,7 +10,6 @@ import java.util.Date;
 public class GetLectureResponse {
 	@JsonProperty("user_name")
 	private String userName;
-	private String name;
 	private String subject;
 	private String content;
 	private String latitude;
@@ -35,14 +34,6 @@ public class GetLectureResponse {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getSubject() {
