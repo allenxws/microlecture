@@ -9,6 +9,6 @@ public class DatabaseConfig {
 	private static final String user = "root";
 	private static final String password = "root";
 	public static void main(String[] args){
-		
+
 	}
 }
