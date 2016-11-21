@@ -19,29 +19,39 @@ public class DatabaseConfig {
 	private static final String showCreateSql = "show create table %s";
 
 	public static void main(String[] args) {
+		pull();
+	}
+
+	public static void pull() {
 		List<String> tables = getAllTables();
 		for (String table : tables) {
 			String createSql = showCreateTable(table);
 			String filePath = sqlPath + "/" + database + "/" + table + ".sql";
-
 		}
 	}
 
 	public static String showCreateTable(String table) {
 		String createSql = "";
-		String querySql = String.format(showCreateSql, table);
-		ResultSet resultSet = doQuery(querySql);
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
 		try {
+			connection = getConnection(driver, String.format(url, database), username, password);
+			statement = connection.createStatement();
+			String querySql = String.format(showCreateSql, table);
+			resultSet = statement.executeQuery(querySql);
 			while (resultSet.next()) {
-				createSql = resultSet.getString("");
+				createSql = resultSet.getString("create table");
 			}
 			return createSql;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		} finally {
-			closeResultSet(resultSet);
+			doClose(resultSet, statement, connection);
 		}
-		return null;
+		return createSql;
 	}
 
 	public static List<String> getAllTables() {
