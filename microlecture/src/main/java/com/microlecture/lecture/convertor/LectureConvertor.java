@@ -1,5 +1,6 @@
 package com.microlecture.lecture.convertor;
 
+import com.google.common.collect.Lists;
 import com.microlecture.lecture.domain.Lecture;
 import com.microlecture.lecture.request.AddLectureRequest;
 import com.microlecture.lecture.request.ListLectureRequest;
@@ -49,7 +50,7 @@ public class LectureConvertor {
 	}
 
 	public static List<ListLectureResponse> convertToListLectureResponseList(List<Lecture> lectures) {
-		List<ListLectureResponse> listLectureResponses =
+		List<ListLectureResponse> listLectureResponses = Lists.newArrayList();
 		if (CollectionUtils.isEmpty(lectures)) {
 			return listLectureResponses;
 		}
