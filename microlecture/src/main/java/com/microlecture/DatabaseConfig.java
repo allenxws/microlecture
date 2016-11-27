@@ -12,9 +12,6 @@ public class DatabaseConfig {
 	private static final String url = "jdbc:mysql://192.168.0.119:3306/%s?useUnicode=true&characterEncoding=utf8";
 	private static final String database = "suerpay";
 	private static final String driver = "com.mysql.jdbc.Driver";
-	private static final String user = "root";
-	private static final String password = "root";
-	public static void main(String[] args){
 	private static final String username = "writeuser";
 	private static final String password = "writeuser";
 	private static final String sqlPath = "/database";
