@@ -1,4 +1,4 @@
-﻿package com.microlecture;
+package com.microlecture;
 
 
 import java.sql.*;
@@ -9,8 +9,10 @@ import java.util.List;
  * Created by xuwushun on 2016/11/7.
  */
 public class DatabaseConfig {
-	private static final String url = "jdbc:mysql://192.168.0.119:3306/%s?useUnicode=true&characterEncoding=utf8";
-	private static final String database = "suerpay";
+//	private static final String url = "jdbc:mysql://192.168.0.119:3306/%s?useUnicode=true&characterEncoding=utf8";
+//	private static final String database = "suerpay";
+	private static final String url = "jdbc:mysql://localhost:3306/%s?useUnicode=true&characterEncoding=utf8";
+	private static final String database = "microlecture";
 	private static final String driver = "com.mysql.jdbc.Driver";
 	private static final String username = "writeuser";
 	private static final String password = "writeuser";
