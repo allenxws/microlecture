@@ -22,10 +22,13 @@ public class DatabaseConfig {
 
 	public static void main(String[] args) {
 		pull();
-		push();
+		//push();
 	}
 
 	public static void push() {
+		List<String> toCreate = new ArrayList<String>();
+		List<String> toUpdate = new ArrayList<String>();
+		List<String> toDelete = new ArrayList<String>();
 		String filePath = projectRoot + sourceRoot + "/" + database;
 		File directory = new File(filePath);
 		if (!directory.isDirectory()) {
