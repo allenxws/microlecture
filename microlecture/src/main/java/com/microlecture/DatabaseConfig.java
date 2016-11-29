@@ -1,4 +1,4 @@
-﻿package com.microlecture;
+package com.microlecture;
 
 
 import java.sql.*;
