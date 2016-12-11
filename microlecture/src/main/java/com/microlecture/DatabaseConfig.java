@@ -1,6 +1,7 @@
 package com.microlecture;
 
 
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,27 +10,93 @@ import java.util.List;
  * Created by xuwushun on 2016/11/7.
  */
 public class DatabaseConfig {
+<<<<<<< HEAD
 //	private static final String url = "jdbc:mysql://192.168.0.119:3306/%s?useUnicode=true&characterEncoding=utf8";
 //	private static final String database = "suerpay";
 	private static final String url = "jdbc:mysql://localhost:3306/%s?useUnicode=true&characterEncoding=utf8";
 	private static final String database = "microlecture";
 	private static final String driver = "com.mysql.jdbc.Driver";
+=======
+	private static final String url = "jdbc:mysql://192.168.0.119:3306/%s?useUnicode=true&characterEncoding=utf8";
+	private static final String database = "suerpay";
+	private static final String driver = "com.mysql.cj.jdbc.Driver";
+>>>>>>> b548c955117fc59bc5b13d1faf33bacd96cfd2f5
 	private static final String username = "writeuser";
 	private static final String password = "writeuser";
-	private static final String sqlPath = "/database";
+	private static final String sourceRoot = "/src/main/resources/database";
+	private static final String projectRoot = System.getProperty("user.dir");
 	private static final String queryTableName = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '%s';";
 	private static final String showCreateSql = "show create table %s";
 
 	public static void main(String[] args) {
 		pull();
+		//push();
+	}
+
+	public static void push() {
+		List<String> toCreate = new ArrayList<String>();
+		List<String> toUpdate = new ArrayList<String>();
+		List<String> toDelete = new ArrayList<String>();
+		String filePath = projectRoot + sourceRoot + "/" + database;
+		File directory = new File(filePath);
+		if (!directory.isDirectory()) {
+			return;
+		}
+		File[] files = directory.listFiles();
+		for (File file : files) {
+			String content = readFile(file);
+
+		}
 	}
 
 	public static void pull() {
 		List<String> tables = getAllTables();
 		for (String table : tables) {
 			String createSql = showCreateTable(table);
-			String filePath = sqlPath + "/" + database + "/" + table + ".sql";
+			String filePath = projectRoot + sourceRoot + "/" + database;//+ "/" + table + ".sql";
+			writeCreateSqlFileBytable(filePath, createSql, table);
 		}
+	}
+
+	public static void writeCreateSqlFileBytable(String filePath, String createSql, String table) {
+		File directory = new File(filePath);
+		if (!directory.exists()) {
+			directory.mkdirs();
+		}
+		File file = new File(filePath + "/" + table + ".sql");
+		if (file.exists()) {
+			file.delete();
+		}
+		writeFile(file, createSql);
+	}
+
+	public static void writeFile(File file, String content) {
+		FileWriter fileWriter = null;
+		try {
+			fileWriter = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+			bufferedWriter.write(content);
+			bufferedWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static String readFile(File file) {
+		String content = "";
+		String line;
+		try {
+			FileReader fileReader = new FileReader(file);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			while ((line = bufferedReader.readLine()) != null) {
+				content += line;
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return content;
 	}
 
 	public static String showCreateTable(String table) {
